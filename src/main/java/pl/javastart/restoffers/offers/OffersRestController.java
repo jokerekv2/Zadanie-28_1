@@ -2,6 +2,7 @@ package pl.javastart.restoffers.offers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.javastart.restoffers.category.Category;
 
 import java.util.List;
 
@@ -29,11 +30,11 @@ public class OffersRestController {
     }
 
     @PostMapping("/api/offers")
-    public ResponseEntity<Offers> addOffer(@RequestBody Offers offer) {
+    public ResponseEntity<Offers> addOffer(@RequestBody Offers offer, @RequestParam String category) {
         if(offer.getId() != null) {
             return ResponseEntity.badRequest().build();
         } else {
-            offersRepository.save(offer);
+//            offersRepository.save(offer);
             return ResponseEntity.ok(offer);
         }
 
